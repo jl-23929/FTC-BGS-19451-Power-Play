@@ -65,7 +65,7 @@ public class Driver extends OpMode
     public void init() {
         telemetry.addData("Status", "Initialized");
 
-        // Initialises the motors (hardware variables).
+        // Initialises the motors and sensors (hardware variables).
         // The strings correlate to the names of the motors in the configuration settings on the robot.
         // If the names correllate, but do not correlate to the correct
         frontLeftDrive  = hardwareMap.get(DcMotor.class, "frontLeftDrive");
