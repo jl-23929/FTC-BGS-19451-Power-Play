@@ -55,7 +55,7 @@ public class autonomousDriveOnly extends LinearOpMode {
     int frontLeftTarget;
     int backRightTarget;
     int backLeftTarget;
-int colourDetected;
+    int colourDetected;
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
