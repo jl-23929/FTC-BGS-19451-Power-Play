@@ -31,13 +31,11 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="AutonomousDriveOnly", group="Linear OpMode")
-public class autonomousDriveOnly extends LinearOpMode {
+@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="AutonomousDriveOnly3", group="Linear OpMode")
+public class autonomousDriveOnly3 extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -55,7 +53,7 @@ public class autonomousDriveOnly extends LinearOpMode {
     int frontLeftTarget;
     int backRightTarget;
     int backLeftTarget;
-    int colourDetected = 1;
+    int colourDetected = 3;
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
