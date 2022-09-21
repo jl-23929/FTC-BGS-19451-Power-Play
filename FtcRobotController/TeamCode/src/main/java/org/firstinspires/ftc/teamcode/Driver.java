@@ -57,7 +57,7 @@ public class Driver extends OpMode
     private DcMotor frontRightDrive = null;
     private DcMotor backRightDrive = null;
     private DcMotor backLeftDrive = null;
-
+    private DcMotor verticalSlides = null;
     /*
      * Code to run ONCE when the driver hits INIT
      */
@@ -72,6 +72,7 @@ public class Driver extends OpMode
         frontRightDrive = hardwareMap.get(DcMotor.class, "frontRightDrive");
         backLeftDrive  = hardwareMap.get(DcMotor.class, "backLeftDrive");
         backRightDrive = hardwareMap.get(DcMotor.class, "backRightDrive");
+        verticalSlides  = hardwareMap.get(DcMotor.class, "verticalSlides");
 
        // To drive forward, most robots require the motors to be flipped on one side.
 
@@ -99,7 +100,14 @@ public class Driver extends OpMode
     // The code runs REPEATEDLY once the driver his START, until the driver hits STOP.
     @Override
     public void loop() {
+        if (gamepad1.right_trigger > 0) {
+            verticalSlides.setPower(gamepad1.right_trigger);
 
+            }
+        if (gamepad1.left_trigger > 0) {
+            verticalSlides.setPower(gamepad1.left_trigger * -1);
+
+        }
 
         frontRightDrive.setPower(gamepad1.left_stick_x + (gamepad1.right_stick_y + gamepad1.right_stick_x));
         backRightDrive.setPower(gamepad1.left_stick_x + (gamepad1.right_stick_y - gamepad1.right_stick_x));
