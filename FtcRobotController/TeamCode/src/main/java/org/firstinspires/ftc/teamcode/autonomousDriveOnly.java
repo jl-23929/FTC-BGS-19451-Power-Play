@@ -34,11 +34,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
-
-@com.qualcomm.robotcore.eventloop.opmode.Autonomous(name="AutonomousDriveOnly", group="Linear OpMode")
+/*
+@Autonomous(name="AutonomousDriveOnly", group="Linear OpMode")
 public class autonomousDriveOnly extends LinearOpMode {
-
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor frontLeftDrive = null;
@@ -167,3 +165,4 @@ switch(colourDetected) {
 
     }
 }
+*/

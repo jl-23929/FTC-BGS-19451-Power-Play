@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -49,8 +49,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
  * IMPORTANT: In order to use this OpMode, you need to obtain your own Vuforia license key as
  * is explained below.
  */
-@TeleOp(name = "Concept: TensorFlow Object Detection", group = "Concept")
-@Disabled
+@TeleOp(name = "Concept: TensorFlow Object Detection w/ Case Statement", group = "Concept")
 public class ConceptTensorFlowObjectDetection extends LinearOpMode {
 
     /*
@@ -64,9 +63,9 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
     // private static final String TFOD_MODEL_FILE  = "/sdcard/FIRST/tflitemodels/CustomTeamModel.tflite";
 
     private static final String[] LABELS = {
-      "1 Bolt",
-      "2 Bulb",
-      "3 Panel"
+      "1",
+      "2",
+      "3"
     };
 
     /*
@@ -82,7 +81,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "AVS+zjL/////AAABmTey7aQVDE2El29xjQD3UpUmcwXMoJ6EC+jY7onB7FlpF2yD9W7F03TbiVRd2MI3JKoayjyt3+sWuNPg2SddNxb2JetTPAnTHp0WhTNxdTWPSyZ3584+XCIDLKsgmeetgD5PgshJf+KL4fWacyFAJcDhHxcinp77creqBs6noc+EQfMDxKTD/Vps+N7wkJFw7o+hMMf5FjI8FnyJoAtWpqE8LchyGYi9IgpDBcyK49JytHo8AgeoDf4rnGO21WU9anNKJj9Fub7VEw6y2kVeTQp7dwnMJxhUZqwwsuwbhIkCcOJbdDajP2Hm6Us30zOcMMhy/OBsLlJjssKi2nhgE8zYNWfz+yM+iBu4iwVxEVo8";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
@@ -95,7 +94,7 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
      * Detection engine.
      */
     private TFObjectDetector tfod;
-
+int imageDetected;
     @Override
     public void runOpMode() {
         // The TFObjectDetector uses the camera frames from the VuforiaLocalizer, so we create that
@@ -145,7 +144,34 @@ public class ConceptTensorFlowObjectDetection extends LinearOpMode {
                             telemetry.addData("Image", "%s (%.0f %% Conf.)", recognition.getLabel(), recognition.getConfidence() * 100 );
                             telemetry.addData("- Position (Row/Col)","%.0f / %.0f", row, col);
                             telemetry.addData("- Size (Width/Height)","%.0f / %.0f", width, height);
+
+                            if (recognition.getLabel() == LABELS[0]) {
+                                imageDetected = java.lang.Integer.parseInt(LABELS[0], 10);
+
+                            }
+                            if (recognition.getLabel() == LABELS[1]) {
+                                imageDetected = java.lang.Integer.parseInt(LABELS[1], 10);
+
+
+                            }
+                            if (recognition.getLabel() == LABELS[2]) {
+                                imageDetected = java.lang.Integer.parseInt(LABELS[2], 10);
+
+
+                            }
                         }
+                        switch (imageDetected) {
+                            case 1:
+                                telemetry.addLine("Image 1 was detected.");
+                                break;
+                            case 2:
+                                telemetry.addLine("Image 2 was detected.");
+                                break;
+                            case 3:
+                                telemetry.addLine("Image 3 was detected.");
+                                break;
+                        }
+                        telemetry.addLine(Integer.toString(imageDetected));
                         telemetry.update();
                     }
                 }
